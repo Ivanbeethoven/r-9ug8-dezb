@@ -1,0 +1,32 @@
+你是资深科研基金申请书撰写专家，同时是分布式文件系统与容器/沙箱系统的架构师。
+
+请先完整阅读同目录下的 `BRIEF.md`（事实底稿、课题原文、写作规范），再严格按它写作。
+
+## 你的任务（只写一个文件）
+`sections/04-content.md` —— 研究内容，约 3500 字，四个研究内容分解。
+
+文件以 `## 04 研究内容` 开头，下设四个 `###` 小节，每节都要走"问题 → 思路 → 具体机制 → 预期结果 / 可验证点"这条线。
+
+### 内容一：统一镜像—工作区数据格式（Nydus EROFS 镜像层 + 私有增量层）
+把 Nydus EROFS 镜像层作为 BrewFS 的不可变 packed lower，Agent 的运行时与工作区增量作为私有 upper；一次 fork 只写元数据头与可写头，做到 O(元数据) 而非 O(数据) 的创建。
+写清：manifest/digest/root inode 校验；namespace 回落与 tombstone（未命中 upper 回落 lower，显式 tombstone 抑制已删除条目复现）；跨格式的 inode/extent 映射（EROFS 压缩单元 pcluster 与 BrewFS 64 MiB chunk / 4 MiB block 的对应关系，注意两者不是同一粒度）；与 OCI layer 的对齐；`lower_visible_size`（只读基线可见边界）与 copy-up 的交互；格式版本演进与旧二进制拒绝策略。
+
+### 内容二：EROFS 语义下的按需加载（lazyload）与元数据预热
+64 MiB chunk / 4 MiB block 的 range read；按需块提升（只在观察到复用后才提升整块，避免共享缓存被污染）；预读与"私有 lookahead"；Linux page cache + BrewFS 内存缓存 + SSD 缓存的多级层次及各自命中判定顺序；FUSE 侧 `max_read` / kernel io_pages 等参数对首次命中延迟的影响。
+写清首次读放大与命中率之间的权衡；如何把 attach（挂载）阶段压到毫秒级（元数据索引预取、manifest 常驻、避免全量目录遍历）；每个 agent 只读自己真正触碰的块，其余保持对象存储状态。
+
+### 内容三：快照 Checkpoint/Restore 的固化与快速恢复
+沙箱文件状态如何一致固化：fsync 语义、原子命名空间事务、crash consistency（发布前完成对象持久化与校验，再发布元数据可见版本）；如何带校验地持久化到 OSS；如何从对象存储**直接恢复挂载而无需本地完整解压**；lease + generation fencing 如何保证"恰好一个写者"并拒绝 stale mount；恢复后 dangling extent、孤儿对象与 GC 安全。
+写清 C/R 的数据布局（哪些属于镜像 lower、哪些属于 upper 增量、哪些属于 runD 的进程/内存状态）与恢复时序；明确边界：BrewFS 负责文件视图与数据面，进程、内核与网络状态由 runD 侧恢复。
+
+### 内容四：高并发创建的长尾抑制与池化预热
+单机 100 沙箱并发创建无明显长尾。写清：前台创建路径与后台写回 / compaction / GC 的资源隔离（队列公平、背压、内存预算）；元数据批量提交与 grouped publication（减少 RPC 与事务数）；控制面链路精简；沙箱池化预热的粒度选择（镜像元数据 / lower attach / guest 内核 / 运行时资源），以及如何避免"预热收益冒充无缓存指标"；containerd 高并发 GC 抖动的规避。
+
+## 写作纪律
+- 中文，学术申请书语气；机制要具体到"谁在哪里做了什么检查"，不写"大幅提升"这类空话。
+- 事实与数字只能来自 BRIEF；性能目标必须标注为"目标"。
+- 可用 markdown 表格（例如格式字段对照、恢复阶段表），但不要放 mermaid 图（图放在 05 章）。
+- 每节结尾落到"对蚂蚁的价值"，具体到链路环节与可计量的节省。
+- 术语统一：不可变 packed lower、私有可写 upper、workspace overlay、Nydus EROFS、runD、lazyload、Checkpoint/Restore、lease + generation fencing、tombstone、copy-up。
+
+写完回复 `DONE 04`，并列出 3 个关键设计决策及理由。不要在回复里复述正文。

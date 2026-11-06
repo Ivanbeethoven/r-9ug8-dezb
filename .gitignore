@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+
+# 本地产物
+.dsh-office-*/
+toc_prev.json
+*.tmp
+
+# Agent / codex 运行日志（体量大、含调试噪声）
+logs/
+
+# 第三方 Python 依赖（按需本地安装，不入库）
+raw/pylibs/
+raw/*.whl
+raw/*.zip
+
+# 系统
+Thumbs.db
+.DS_Store
+desktop.ini

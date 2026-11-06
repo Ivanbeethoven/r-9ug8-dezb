@@ -1,0 +1,39 @@
+你是资深科研基金申请书撰写专家，同时是分布式文件系统与容器/沙箱系统的架构师。
+
+请先完整阅读同目录下的 `BRIEF.md`（事实底稿、课题原文、写作规范），再严格按它写作。
+
+## 你的任务（只写一个文件）
+`sections/05-route.md` —— 技术路线与系统架构，约 2500 字。
+
+文件以 `## 05 技术路线与系统架构` 开头，必须包含以下内容（顺序自定，但都要有）：
+
+### 1. 分层架构（一张 mermaid flowchart）
+主线：蚂蚁管控面 / K8s → 沙箱调度 → runD guest →（Nydus EROFS 镜像层 / BrewFS workspace overlay）→ BrewFS FUSE → VFS → 元数据事务 → 多级缓存 → OSS。
+图中要体现：不可变 packed lower 与私有 upper 的分层、元数据后端（Redis/TiKV）、runD 负责的进程/网络/权限边界。图后配 5—8 行说明，讲清每一层负责什么、数据从哪里来。
+
+### 2. 沙箱冷启动时序（一张 mermaid sequenceDiagram）
+从管控请求下发到 sandbox ready，标出每一段的时间预算（4G 镜像冷启动总预算 1000ms、快照恢复总预算 100ms，与第 03 章口径一致）。说明哪些段可以并行、哪些段必须串行，以及"提前发布就绪"的判定点在哪里。
+
+### 3. Checkpoint/Restore 时序（一张 mermaid sequenceDiagram）
+checkpoint：stop admission → drain writes / fsync → 上传对象并校验 → 原子发布 manifest/revision → 生成快照引用；
+restore：解析快照 → 获取 lease 与 generation → 重建 FUSE 挂载 → 按需读取首触数据 → runD 恢复进程与内存状态 → 校验探针通过 → 开放写入。
+
+### 4. 关键数据结构（表格或伪代码）
+至少覆盖：packed lower manifest（格式版本、root inode、chunk/block 布局、digest、压缩单元映射）、workspace 元数据头（namespace id、lower 绑定、生命周期状态）、upper 命名空间条目（dentry/inode/xattr 与 tombstone）、slice/extent 描述、lease 与 generation fence 字段（持有者世代、状态、后端过期时刻）、恢复意图记录（Truncating/Publication/Discard 的幂等清理游标）。
+
+### 5. 失败模式与恢复
+逐项给出：节点崩溃、lease 过期、对象缺失、校验失败、并发 fork 竞争、恢复中断。每种写清检测方式与处理策略（拒绝写入 / 隔离 workspace / 从已校验 revision 重建 / 幂等重试）。
+
+### 6. 与蚂蚁现有栈的对接
+containerd、runD、Nydus、OSS 各自的职责边界；BrewFS 只负责文件视图与数据面，不侵入进程/网络隔离；三种可选部署形态（宿主机侧 workspace 服务 + guest 内 FUSE 挂载 / 侧车进程 / 纯远端挂载）及取舍。
+
+### 7. 工程落地路径
+从当前 opt-in Cargo feature 到生产可用需要补的能力：operator 生命周期管理、statfs 原子计量、gateway 支持、多客户端并发与滚动升级测试、可观测性。给出"研究原型 → 蚂蚁环境联调 → 指标收敛"的三段式推进节奏。
+
+## 写作纪律
+- 中文，学术申请书语气；mermaid 图不超过 3 张，节点命名与正文一致，图必须是合法 mermaid 语法（flowchart LR / sequenceDiagram）。
+- 数字只能来自 BRIEF 与第 03 章口径（总预算 1000ms / 100ms），不得虚构各段耗时明细之外的新数据；未定项用"待联调标定"。
+- 术语统一：不可变 packed lower、私有可写 upper、workspace overlay、Nydus EROFS、runD、lazyload、Checkpoint/Restore、lease + generation fencing。
+- 不要写"大幅提升""颠覆性"这类空话。
+
+写完回复 `DONE 05`，并列出 3 个关键设计决策及理由。不要在回复里复述正文。
