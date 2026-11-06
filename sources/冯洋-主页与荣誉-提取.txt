@@ -1,0 +1,373 @@
+﻿Yang Feng - Nanjing University
+Bio
+Research
+Publications
+Teaching
+Books
+Services
+Honors &amp; Awards
+Yang Feng
+冯洋
+Associate Professor
+Ph.D. Supervisor
+School of Computer Science
+Nanjing University
+Software Security and Compiler Technology Lab
+Office: Room 313
+Computer Science Building
+fengyang AT nju DOT edu DOT cn
+Google Scholar
+Research keywords
+Biography
+Yang Feng
+is an associate professor and Ph.D. supervisor at
+Nanjing University
+. His research focuses on two directions:
+software quality assurance and intelligent technologies
+, and
+language-based software engineering
+.
+Software quality assurance and intelligent technologies
+He develops testing and debugging techniques to improve the reliability and robustness of complex software and AI systems. Representative work includes
+DeepGini
+(ISSTA 2020) for prioritizing tests for deep neural networks,
+QATest
+(ASE 2022) for fuzzing question-answering systems, and
+RediI
+(ICSE 2025) for deterministic failure reproduction in distributed systems. His work also includes
+TACO
+(ICSE 2026) for assessing the trustworthiness of large language models in coding assistance, and
+AtPatch
+(ICSE 2026) for debugging Transformer models by correcting anomalous attention during inference. His recent research further investigates the behavioral trustworthiness and security of large language models and agents.
+Language-based software engineering
+He develops techniques and tools for improving the reliability of Rust software and compilers, and studies trustworthy C/C++-to-Rust translation. His work includes
+FRIES
+for fuzzing Rust library interactions,
+PALM
+for improving Rust unit test coverage, and
+RustGTC
+for constraint-guided API test generation. He also investigates code–comment inconsistency detection through
+RustC4
+/
+RustC4++
+, compiler fix-suggestion testing through
+SugBreaker
+(FSE 2026), and panic-bug analysis and repair through
+PanicFI
+. His research has received
+multiple Distinguished Paper Awards
+at ASE 2022, ESEC/FSE 2023, and Internetware 2023.
+His work has also earned
+strong recognition from industry and open-source communities
+. His honors include
+Huawei’s Spark Award
+and
+Innovation Practice Award
+, the
+Xiaomi Youth Science and Technology Award
+, and the
+Xuanwu Community Outstanding Contribution Award
+. He was also recognized as a
+2024 Annual Partner
+by Ant Group’s TuGraph community.
+Prospective Students.
+I recruit a small number of Ph.D. and master’s students each year to work on software quality, Rust, and compiler technologies. I also welcome undergraduates interested in research. If you would like to explore research opportunities in our group, please contact me at
+fengyang AT nju DOT edu DOT cn
+.
+I am serving as a program committee member for ICSE 2027 (Research Track) and FSE 2027 (Research Papers and Industry Papers). Please consider submitting your work to FSE 2027.
+ICSE 2027 ↗
+FSE 2027 — Research Papers ↗
+FSE 2027 — Industry Papers ↗
+News
+Jul 2026
+Our paper on
+PanicFI
+, an infrastructure for fixing panic bugs in real-world Rust programs, was published online in TOSEM.
+Jul 2026
+I received a first prize in the National Computer Teaching Case Design Competition for my teaching case
+《Rust语言与编译技术实践》
+.
+Jun 2026
+Our paper on
+SugBreaker
+, which detects bugs in Rust compiler fix suggestions, was published in PACMSE (FSE 2026).
+Jun 2026
+I received the
+Xuanwu Community Contribution Award 2025
+for my contributions to the Rust ecosystem.
+Mar 2026
+Our paper on
+RustC4++
+, combining LLMs and static analysis to detect Rust code–comment inconsistencies, was published online in TOSEM.
+Dec 2025
+Congratulations to Zixi on the acceptance of our paper at FSE 2026! Our work proposes a testing approach targeting diagnostic error messages in the Rust compiler. We will continue to follow up on this work and aim to integrate it into the upstream community.
+Oct 2025
+Our three papers—
+TACO
+,
+AtPatch
+, and
+VADA
+—were accepted to ICSE 2026, covering trust assessment in coding assistance, Transformer debugging, and value alignment evaluation.
+Feb 2025
+I was recognized as a
+2024 Annual Partner
+by Ant Group’s TuGraph community.
+Jul 2024
+Two of our papers were accepted to ISSTA'24! Congratulations to Xizhe and Yining! The FRIES presents an effective as well as efficient fuzzing tool for Rust programs, and Datactive is the first data fault detector for the object detection tasks.
+2024
+I received
+Huawei’s Spark Award
+for work on C-to-Rust translation.
+Earlier news
+Dec 2023
+I received
+Huawei’s Innovation Practice Award
+for work on memory-safe, trustworthy programming languages.
+2023
+Our multi-sensor fusion robustness paper received an ACM SIGSOFT Distinguished Paper Award at ESEC/FSE.
+Oct 2022
+Our QATest paper received ACM SIGSOFT Distinguished Paper Award at ASE'22!
+Jul 2022
+Congratulations to Zixi and Yining for our QATest paper accepted to ASE'22! This paper presents a uniform fuzzing framework for question answering systems.
+Apr 2022
+Two of our papers were accepted to ISSTA'22! Congratulations to Pin and An! The LiRTest presents the first point cloud data augmentation framework for the automated testing of autonomous driving vehicles.
+Forthcoming
+Our textbook
+《Rust语言程序设计》
+is in print preparation with China Machine Press.
+Accepted
+Our paper on
+RustGTC
+has been accepted to ASE 2026. Our work on
+fuzzing the boundary between models and code
+has been accepted to ISSTA 2026.
+Research
+Yang Feng’s team studies how to make complex software and AI systems more reliable, and how to build the tools and infrastructure that support them. The team’s research combines software testing, program analysis, language-based software engineering, and systems development.
+Software Quality Assurance and Intelligent Technologies
+This direction investigates how to characterize software quality, expose failures, diagnose their causes, and assess the trustworthiness of software and AI systems.
+Quality Characterization and Adaptive Testing
+When a system has countless possible inputs, which tests are most likely to reveal problems?
+This topic studies how quality measures and testing evidence can guide test generation, selection, and prioritization.
+DeepGini
+(ISSTA 2020) investigates test prioritization for deep neural networks, while
+Adaptive Test Selection
+(ICSE 2022) explores how to adapt test selection for these systems. For question-answering systems,
+QATest
+(ASE 2022) provides a uniform fuzzing framework.
+Multi-Source Defect Diagnosis and Robustness Enhancement
+When an AI system makes a mistake, does the problem come from its data, its model, or the conditions in which it operates?
+This topic investigates different sources of failure and develops techniques for diagnosis and robustness testing. At the data level,
+Datactive
+(ISSTA 2024) localizes data faults in object detection systems. At the model level,
+AtPatch
+(ICSE 2026) diagnoses and corrects anomalous attention in Transformer models. Research on operating conditions includes
+Drivence
+(TSE 2026), which synthesizes realistic driving sequences to test multi-sensor fusion perception systems.
+Trustworthiness and Security of Large Language Models and Agents
+When should we trust a model’s answer or an agent’s action?
+This topic investigates how to evaluate models and agents in the contexts where they are used.
+TACO
+(ICSE 2026) studies the trustworthiness of large language models in coding assistance, while
+VADA
+(ICSE 2026) supports value-aware data generation and alignment evaluation across cultural contexts. The team is also investigating the behavioral trustworthiness and security of agents, including their responses to unsafe or adversarial interactions.
+System Testing and Fault Diagnosis for AI Infrastructure
+How can we find and diagnose failures in the software that trains and runs AI models?
+This topic studies defects in the libraries, frameworks, and distributed systems supporting AI applications. An
+empirical study of deep learning framework bugs
+(Information and Software Technology 2022) examines their characteristics, providing evidence for understanding infrastructure failures. Building testing techniques for these systems,
+MoCo
+(TSE 2025) generates tests for deep learning libraries through code assembly. For distributed-system debugging,
+RediI
+(ICSE 2025) enables deterministic failure reproduction. The team is currently extending its research to testing, fault diagnosis, and failure reproduction in inference services and distributed training systems.
+Language-based Software Engineering and AI Infrastructure
+This direction investigates how language properties can support software analysis, migration, testing, and repair, alongside the construction of storage and execution infrastructure for AI workloads.
+Type Analysis and Compilation Efficiency
+How can tools infer useful information about a program, and how can its compilation process become more efficient?
+This topic focuses on type analysis and the organization of compilation workflows. The team is currently working on type analysis for dynamically typed programs, together with techniques for reusing compilation results and coordinating distributed compilation tasks. These efforts aim to improve the information available to development tools and reduce the overhead of building software.
+Semantic Preservation and Constraint Adaptation in Cross-Language Translation
+How can we migrate C/C++ software to Rust while preserving its intended behavior?
+Moving between languages requires addressing differences in types, memory management, ownership, and interfaces. The team is currently working on trustworthy C/C++-to-Rust translation, investigating how to preserve program semantics while adapting to Rust’s language constraints. A central concern is how to assess the correctness of translated programs and support practical migration with explicit attention to semantic preservation.
+Language Constraints for Defect Detection and Repair
+How can language rules and API contracts help us generate better tests and find bugs?
+This topic uses language properties, program context, and API information to guide testing and analysis, with Rust as a central focus.
+FRIES
+(ISSTA 2024) tests Rust library interactions through ecosystem-guided target generation.
+PALM
+(ASE 2025) combines program analysis and language models to improve unit-test coverage, while
+RustGTC
+(ASE 2026, accepted) investigates constraint-guided API test generation using comments and code context.
+The research also addresses consistency checking, repair, and compiler diagnostics.
+RustC4++
+(TOSEM 2026) detects inconsistencies between Rust code and comments, and
+PanicFI
+(TOSEM 2026) provides infrastructure for fixing panic bugs. At the toolchain level,
+SugBreaker
+(FSE 2026) tests the reliability of Rust compiler fix suggestions through constraint-violation-guided mutation.
+Distributed File Systems and Heterogeneous Engines for AI
+How can distributed storage and heterogeneous engines better support AI workloads?
+The team is currently working on the design and implementation of distributed file systems and heterogeneous engines for AI. The file-system work addresses the storage and data-access needs of AI workloads, while the engine work concerns execution support in heterogeneous environments. This research brings together storage-system design and execution-engine development to provide efficient and reliable infrastructure for AI applications.
+Publications
+Google Scholar ↗
+I have been fortunate to collaborate with outstanding students and some of the world's leading researchers on the work presented below. A complete list of my publications is available on
+my DBLP page
+.
+Selected venues:
+·
+{{ item.venue }}
+({{ item.count }})
+·
+Distinguished Paper Awards
+({{ distinguishedPaperAwardCount }})
+Loading publications…
+Could not load publications.
+Retry
+{{ group.year }}
+{{ group.year }}
+{{ publicationLabel(paper) }}
+{{ paper.title }}
+{{ paper.title }}
+{{ paper.venue_infos }}
+{{ paper.note }}
+[Paper]
+{{ paper.comments }}
+Teaching
+Loading teaching…
+Could not load teaching.
+Retry
+{{ course.year }}:
+{{ course.course }}
+{{ course.course }}
+{{ booksLabels.heading }}
+English
+中文
+{{ booksLabels.empty }}
+{{ book.cover_note }}
+{{ book.title }}
+{{ book.title_en }}
+/
+{{ book.publisher }}
+· {{ bookPublicationDate(book) }}
+ISBN
+({{ book.format }})
+: {{ book.isbn }}
+{{ book.status_label }}
+{{ book.highlight }}
+{{ book.paragraphs.join(booksLanguage === 'zh' ? '' : ' ') }}
+0" class="book-links">
+{{ booksLabels.links }}
+{{ bookLinkLabel(link) }} ↗
+Professional Services
+Loading services…
+Could not load services.
+Retry
+{{ serviceGroup.year }}
+{{ item }}
+Honors &amp; Awards
+Research
+科研
+2022
+ACM SIGSOFT Distinguished Paper Award, ASE 2022
+ACM SIGSOFT杰出论文奖，ASE 2022
+ACM SIGSOFT
+2023
+ACM SIGSOFT Distinguished Paper Award, ESEC/FSE 2023
+ACM SIGSOFT杰出论文奖，ESEC/FSE 2023
+ACM SIGSOFT
+2023
+Internetware Distinguished Paper Award, Internetware 2023
+Internetware杰出论文奖，Internetware 2023
+Internetware Organizing Committee
+Internetware 组委会
+2023
+Huawei Innovation Practice Award
+华为创新实践奖
+Huawei Technologies Co., Ltd.
+华为技术有限公司
+2023
+Outstanding Forum Award, CCF ChinaSoft 2023
+CCF ChinaSoft 2023优秀论坛奖
+China Computer Federation (CCF)
+中国计算机学会（CCF）
+2023
+Huawei Technology Innovation Award
+华为技术创新奖
+Huawei Technologies Co., Ltd.
+华为技术有限公司
+2024
+Huawei Spark Award
+华为火花奖
+Huawei Technologies Co., Ltd.
+华为技术有限公司
+2025
+Xiaomi Youth Science and Technology Award
+小米青年科技奖
+Xiaomi Corporation
+小米集团
+2025
+TuGraph Annual Partner, 2024
+TuGraph 2024年度合作伙伴
+TuGraph Community, Ant Group
+蚂蚁集团 TuGraph 社区
+2026
+Xuanwu Community Contribution Award 2025
+旋武社区2025贡献奖
+Working Committee of the OpenAtom Xuanwu Open Source Community
+开放原子旋武开源社区工作委员会
+Teaching
+教学
+2023
+First Prize, Eighth National Computer Course Laboratory Teaching Case Design Competition
+第八届全国计算机类课程实验教学案例设计竞赛一等奖
+Computer Science Group, Joint Council of National Experimental Teaching Demonstration Centers
+国家级实验教学示范中心联席会计算机学科组
+China Computer Practice Education Federation
+中国计算机实践教育联合会
+2024
+Outstanding Advisor Award, National College Student Computer Systems Competition
+全国大学生计算机系统能力大赛优秀指导教师
+National Association for Computer Education in Higher Education
+全国高等学校计算机教育研究会
+Organizing Committee of the National College Student Computer Systems Competition
+全国大学生计算机系统能力大赛组委会
+2024
+Outstanding Presenter Award
+卓越报告人
+Virtual Teaching and Learning Research Section for Compiler Principles
+教育部编译原理虚拟教研室
+2024
+Textbook Development Award
+教材建设奖
+Virtual Teaching and Learning Research Section for Compiler Principles
+教育部编译原理虚拟教研室
+2025
+Outstanding Advisor Award, National College Student Computer Systems Competition
+全国大学生计算机系统能力大赛优秀指导教师
+National Association for Computer Education in Higher Education
+全国高等学校计算机教育研究会
+Organizing Committee of the National College Student Computer Systems Competition
+全国大学生计算机系统能力大赛组委会
+2025
+Excellent Instructor Prize, Second OpenAtom Competition
+第二届开放原子大赛优秀指导教师／教练奖
+OpenAtom Foundation
+开放原子开源基金会
+2026
+First Prize, National Computer Teaching Case Design Competition
+全国计算机教学案例设计比赛一等奖
+Education Committee, China Computer Federation (CCF)
+中国计算机学会（CCF）教育专业委员会
+2026
+Graduating Undergraduates’ Favorite Course Award
+本科毕业生“我心目中的好课程”
+School of Computer Science, Nanjing University
+南京大学计算机学院
+2026
+First Prize, Teaching Paper Competition
+教学论文征集一等奖
+Computer Science Teaching Steering Committee for Higher Education, Ministry of Education
+教育部高等学校计算机类专业教学指导委员会
+National Association for Computer Education in Higher Education
+全国高等学校计算机教育研究会
+Yang Feng · Nanjing University
+Nanjing, China
